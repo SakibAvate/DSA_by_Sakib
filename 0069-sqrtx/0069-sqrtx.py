@@ -1,14 +1,18 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
 
-        if x < 2 :
-            return x
+        left, right = 0, x
+        ans = 0
 
-        r = x     
-        while r*r >x:
-            r = (r + x //r)//2
+        while left <= right:
+            mid = (left + right) // 2
+            if mid * mid <= x:
+                ans = mid
+                left = mid + 1
+            else:
+                right = mid - 1
 
-        return r        
+        return ans        
 
         ''' i=1
         while i*i <= x:

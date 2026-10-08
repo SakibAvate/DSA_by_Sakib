@@ -1,14 +1,12 @@
 class Solution:
-    
-    def fibo(self,n):
-
-        if n ==0  or n == 1:
+    def fib(self, n: int) -> int:
+        if n<=1:
             return n
 
-        return self.fibo(n-1)+ self.fibo(n-2)
-    
-    
-    def fib(self, n: int) -> int:
-        ans = self.fibo(n)
-        return ans
-        
+        a=0
+        b=1
+
+        for _ in range(2 , n+1):
+            a , b = b , a+b
+
+        return b    

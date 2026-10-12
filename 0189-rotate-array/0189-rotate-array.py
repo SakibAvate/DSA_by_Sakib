@@ -1,8 +1,18 @@
 class Solution:
     def rotate(self, nums: list[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
+        def reverse(nums, left, right):
+            while left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+
         n = len(nums)
-        k %= n
-        nums[:] = nums[n-k:] + nums[:n-k]
+
+        if n == 0:
+            return
+
+        k = k % n
+
+        reverse(nums, n - k, n - 1)
+        reverse(nums, 0, n - k - 1)
+        reverse(nums, 0, n - 1)      
